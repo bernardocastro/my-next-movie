@@ -8,7 +8,7 @@ const MovieCard = () => {
     const [movieData, setMovieData] = useState([])
 
     const getData = async () => {
-        const resp = await api.get(`/trending/movie/week?api_key=${process.env.TMDB_KEY}`)
+        const resp = await api.get(`/trending/movie/week?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`)
         setMovieData(resp.data.results)
     }
 
