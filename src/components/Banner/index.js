@@ -11,7 +11,7 @@ const Banner = () => {
     const [randomMovie, setRandomMovie] = useState({})
 
     const getData = async () => {
-        const resp = await api.get(`/trending/movie/day?api_key=${process.env.TMDB_KEY}`)
+        const resp = await api.get(`/trending/movie/day?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`)
         setMovieData(resp.data.results)
         setRandomMovie(resp.data.results[Math.floor(Math.random() * movieData.length)])
     }
