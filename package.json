@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev":"next dev" 
+    "dev": "next dev"
   },
   "repository": {
     "type": "git",
@@ -18,8 +18,16 @@
   },
   "homepage": "https://github.com/bernardocastro/my-next-movie#readme",
   "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/icons-material": "^5.10.6",
+    "@mui/material": "^5.10.6",
+    "@nextcss/reset": "^0.2.2-beta",
+    "axios": "^0.27.2",
     "next": "^12.3.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "sass": "^1.55.0",
+    "styled-components": "^5.3.5"
   }
 }
