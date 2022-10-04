@@ -13,6 +13,22 @@ const Home = () => {
                     Week Trending
                 </Typography>
                 <MovieCard />
+                <Typography style={{marginLeft: '3rem', color: '#FFF', fontSize: '1.6rem', fontWeight: 900 }}>
+                    Comedy
+                </Typography>
+                <MovieCard />
+                <Typography style={{marginLeft: '3rem', color: '#FFF', fontSize: '1.6rem', fontWeight: 900 }}>
+                    Horror
+                </Typography>
+                <MovieCard />
+                <Typography style={{marginLeft: '3rem', color: '#FFF', fontSize: '1.6rem', fontWeight: 900 }}>
+                    Thriller
+                </Typography>
+                <MovieCard />
+                <Typography style={{marginLeft: '3rem', color: '#FFF', fontSize: '1.6rem', fontWeight: 900 }}>
+                    Drama
+                </Typography>
+                <MovieCard />
             </Box>
         </>
     )

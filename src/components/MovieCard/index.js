@@ -1,9 +1,44 @@
 import { useEffect, useState } from 'react';
 import api from '../../api/api';
-import { Card, CardContent, CardMedia, Typography, Box } from '@mui/material'
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 3rem;
+`
+const CardInfo = styled.div`
+    width: 100%;
+    height: 100px;
+    background: rgb(20,20,20);
+    display: none;
+    border-radius: 0 0 6px 6px;
+`
+const Card = styled.div`
+    width: 230px;
+    height: 130px;
+    margin: 15px 5px 15px 0;
+    transition: transform .2s;
+        &:hover {
+            transform: scale(1.3);
+            cursor: pointer;
+        };
+        &:hover ${CardInfo} {
+            display: flex;
+        };
+`
+const CardImg = styled.img`
+    width: 100%; 
+    height: 100%; 
+    border-radius: 6px;
+        &:hover {
+            border-radius: 6px 6px 0 0
+        }
+        
+`
 
 const MovieCard = () => {
-    const imgURL = process.env.IMAGE_URL
+    const imgURL = process.env.NEXT_PUBLIC_IMAGE_URL
 
     const [movieData, setMovieData] = useState([])
 
@@ -18,18 +53,21 @@ const MovieCard = () => {
 
     return (
         <>
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', marginLeft: '3rem' }}>
+            <Wrapper>
                 {
                     movieData.map((movie) => {
                         const { title, overview, backdrop_path } = movie
                         return (
-                            <div style={{ width: 230, height: 130, margin: '15px 5px 15px 0' }}>
-                                <img style={{ width: '100%', height: '100%',  borderRadius: 6 }} src={imgURL + backdrop_path} alt={title} />
-                            </div>
+                            <Card>
+                                <CardImg src={imgURL + backdrop_path} alt={title} />
+                                <CardInfo>
+                                    oi
+                                </CardInfo>
+                            </Card>
                         )
                     })
                 }
-            </Box>
+            </Wrapper>
         </>
     )
 }
