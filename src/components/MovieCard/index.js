@@ -1,6 +1,12 @@
 import { useEffect, useState } from 'react';
 import api from '../../api/api';
 import styled from 'styled-components';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import AddIcon from '@mui/icons-material/Add';
+import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
+import ThumbDownOutlinedIcon from '@mui/icons-material/ThumbDownOutlined';
+import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
+import { createTheme } from '@mui/material/styles';
 
 const Wrapper = styled.div`
     display: flex;
@@ -36,6 +42,19 @@ const CardImg = styled.img`
         }
         
 `
+const PlayButton = styled.button`
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border-color: transparent;
+`
+const ActionButtons = styled.button`
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border-color: #E0E0E0;
+    background: transparent;
+`
 
 const MovieCard = () => {
     const imgURL = process.env.NEXT_PUBLIC_IMAGE_URL
@@ -61,7 +80,21 @@ const MovieCard = () => {
                             <Card>
                                 <CardImg src={imgURL + backdrop_path} alt={title} />
                                 <CardInfo>
-                                    oi
+                                    <PlayButton>
+                                        <PlayArrowIcon />
+                                    </PlayButton>
+                                    <ActionButtons>
+                                        <AddIcon style={{color: '#fff'}} />
+                                    </ActionButtons>
+                                    <ActionButtons>
+                                        <ThumbUpOutlinedIcon style={{color: '#fff'}} />
+                                    </ActionButtons>
+                                    <ActionButtons>
+                                        <ThumbDownOutlinedIcon style={{color: '#fff'}} />
+                                    </ActionButtons>
+                                    <ActionButtons>
+                                        <ExpandMoreOutlinedIcon style={{color: '#fff'}} />
+                                    </ActionButtons>
                                 </CardInfo>
                             </Card>
                         )
