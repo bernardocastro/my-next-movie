@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import api from '../../api/api';
-import styled from 'styled-components';
+import styled from 'styled-components'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import AddIcon from '@mui/icons-material/Add';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import ThumbDownOutlinedIcon from '@mui/icons-material/ThumbDownOutlined';
 import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
-import { createTheme } from '@mui/material/styles';
 
 const Wrapper = styled.div`
     display: flex;
@@ -19,6 +18,7 @@ const CardInfo = styled.div`
     background: rgb(20,20,20);
     display: none;
     border-radius: 0 0 6px 6px;
+    padding: 6px;
 `
 const Card = styled.div`
     width: 230px;
@@ -31,6 +31,7 @@ const Card = styled.div`
         };
         &:hover ${CardInfo} {
             display: flex;
+            flex-direction: column;
         };
 `
 const CardImg = styled.img`
@@ -47,13 +48,32 @@ const PlayButton = styled.button`
     height: 32px;
     border-radius: 50%;
     border-color: transparent;
+    margin: 3px;
 `
 const ActionButtons = styled.button`
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    border-color: #E0E0E0;
+    border: 2px solid #E0E0E0;
     background: transparent;
+    margin: 3px;
+`
+const MovieTitle = styled.p`
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+`
+const ButtonsWrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+`
+const DescriptionWrapper = styled.div`
+
+`
+const MovieMatch = styled.p`
+    font-weight: bold;
+    font-size: 15px;
+    color: #53D853;
 `
 
 const MovieCard = () => {
@@ -64,6 +84,7 @@ const MovieCard = () => {
     const getData = async () => {
         const resp = await api.get(`/trending/movie/week?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`)
         setMovieData(resp.data.results)
+        console.log(resp)
     }
 
     useEffect(() => {
@@ -74,27 +95,45 @@ const MovieCard = () => {
         <>
             <Wrapper>
                 {
-                    movieData.map((movie) => {
-                        const { title, overview, backdrop_path } = movie
+                    movieData.map((movie, index) => {
+                        const { title, overview, backdrop_path, vote_average } = movie
                         return (
-                            <Card>
+                            <Card key={index}>
                                 <CardImg src={imgURL + backdrop_path} alt={title} />
                                 <CardInfo>
-                                    <PlayButton>
-                                        <PlayArrowIcon />
-                                    </PlayButton>
-                                    <ActionButtons>
-                                        <AddIcon style={{color: '#fff'}} />
-                                    </ActionButtons>
-                                    <ActionButtons>
-                                        <ThumbUpOutlinedIcon style={{color: '#fff'}} />
-                                    </ActionButtons>
-                                    <ActionButtons>
-                                        <ThumbDownOutlinedIcon style={{color: '#fff'}} />
-                                    </ActionButtons>
-                                    <ActionButtons>
-                                        <ExpandMoreOutlinedIcon style={{color: '#fff'}} />
-                                    </ActionButtons>
+                                    <ButtonsWrapper>
+                                        <div>
+                                            <PlayButton>
+                                                <PlayArrowIcon />
+                                            </PlayButton>
+                                            <ActionButtons>
+                                                <AddIcon style={{ color: '#fff' }} />
+                                            </ActionButtons>
+                                            <ActionButtons>
+                                                <ThumbUpOutlinedIcon style={{ color: '#fff' }} />
+                                            </ActionButtons>
+                                            <ActionButtons>
+                                                <ThumbDownOutlinedIcon style={{ color: '#fff' }} />
+                                            </ActionButtons>
+                                        </div>
+                                        <div>
+                                            <ActionButtons>
+                                                <ExpandMoreOutlinedIcon style={{ color: '#fff' }} />
+                                            </ActionButtons>
+                                        </div>
+                                    </ButtonsWrapper>
+                                    <DescriptionWrapper>
+                                        <div>
+                                            <MovieTitle>
+                                                {title}
+                                            </MovieTitle>
+                                        </div>
+                                        <div>
+                                            <MovieMatch>
+                                                {Math.round(vote_average * 100) / 100} rate
+                                            </MovieMatch>
+                                        </div>
+                                    </DescriptionWrapper>
                                 </CardInfo>
                             </Card>
                         )

@@ -1,8 +1,16 @@
 import { useEffect, useState } from 'react';
 import api from '../../api/api';
-import { Button, Card, CardContent, CardMedia, Typography, Box, ListItemSecondaryAction, IconButton } from '@mui/material'
+import { Button, Card, CardContent, Typography, Box, ListItemSecondaryAction, IconButton } from '@mui/material'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import styled from 'styled-components';
+
+const BannerImg = styled.img`
+    width: 100%;
+    height: 100%; 
+    position: relative;
+    -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)))
+`
 
 const Banner = () => {
     const imgURL = process.env.NEXT_PUBLIC_IMAGE_URL
@@ -23,10 +31,9 @@ const Banner = () => {
     return (
         <>
             <div style={{ width: '100%', height: '67vh' }} >
-                <img
+                <BannerImg
                     src={imgURL + randomMovie.backdrop_path}
                     alt={randomMovie.title}
-                    style={{ width: '100%', height: '100%', position: 'relative' }}
                 />
                 <div style={{ marginLeft: '3.5rem', position: 'absolute', top: '25%', width: 400 }}>
                     <Typography style={{ fontWeight: 600, fontSize: 40, color: '#fff', textShadow: '2px 2px 4px rgb(0 0 0 / 45%)' }}>{randomMovie.title}</Typography>
