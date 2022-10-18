@@ -15,11 +15,11 @@ const Wrapper = styled.div`
 `
 const CardInfo = styled.div`
     width: 100%;
-    height: 100px;
+    height: 125px;
     background: rgb(20,20,20);
     display: none;
     border-radius: 0 0 6px 6px;
-    padding: 6px;
+    padding: 7px;
 `
 const Card = styled.div`
     width: 230px;
@@ -50,6 +50,9 @@ const PlayButton = styled.button`
     border-radius: 50%;
     border-color: transparent;
     margin: 3px;
+        &:hover {
+            cursor: pointer
+        }
 `
 const ActionButtons = styled.button`
     width: 32px;
@@ -58,6 +61,9 @@ const ActionButtons = styled.button`
     border: 2px solid #E0E0E0;
     background: transparent;
     margin: 3px;
+        &:hover {
+            cursor: pointer
+        }
 `
 const MovieTitle = styled.p`
     color: #fff;
@@ -69,7 +75,7 @@ const ButtonsWrapper = styled.div`
     justify-content: space-between;
 `
 const DescriptionWrapper = styled.div`
-
+    margin-left: 5px;
 `
 const MovieMatch = styled.p`
     font-weight: bold;
@@ -77,18 +83,24 @@ const MovieMatch = styled.p`
     color: #53D853;
 `
 const MovieGenre = styled.p`
-    font-weight: bold;
     font-size: 15px;
     color: #fff;
 `
+const DotDiv = styled.div`
+    width: 10px;
+    height: 10px;
+    color: #FFFFFF80;
+    font-size: 35px;
+    margin: -25px 4px;
+`
 
-const MovieCard = () => {
+const MovieCard = ({endpoint}) => {
     const imgURL = process.env.NEXT_PUBLIC_IMAGE_URL
 
     const [movieData, setMovieData] = useState([])
 
     const getData = async () => {
-        const resp = await api.get(`/trending/movie/week?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`)
+        const resp = await api.get(endpoint)
         setMovieData(resp.data.results)
         console.log(resp)
     }
@@ -146,15 +158,23 @@ const MovieCard = () => {
                                         </div>
                                         <div>
                                             <MovieMatch>
-                                                {Math.round(vote_average * 100) / 100} rate
+                                                {Math.round(vote_average * 100) / 10}% match
                                             </MovieMatch>
                                         </div>
-                                        <div>
+                                        <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                                             {
-                                                genre_ids.map((genreId) => {
-                                                    <MovieGenre>
-                                                        {getGenreById(genreId)}
-                                                    </MovieGenre>
+                                                genre_ids.slice(0, 3).map((genreId, index) => {
+                                                    const isLast = index === genre_ids.length - 1
+                                                    return (
+                                                        <>
+                                                            <MovieGenre>
+                                                                {getGenreById(genreId)}
+                                                            </MovieGenre>
+                                                            {
+                                                                !isLast && <DotDiv>.</DotDiv>
+                                                            }
+                                                        </>
+                                                    )
                                                 })
                                             }
                                         </div>
