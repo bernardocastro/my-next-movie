@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import api from '../../api/api';
-import { Button, Card, CardContent, Typography, Box, ListItemSecondaryAction, IconButton } from '@mui/material'
+import { Typography, IconButton } from '@mui/material'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import styled from 'styled-components';

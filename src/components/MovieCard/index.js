@@ -80,7 +80,7 @@ const DescriptionWrapper = styled.div`
 const MovieMatch = styled.p`
     font-weight: bold;
     font-size: 15px;
-    color: #53D853;
+    color: #53D853
 `
 const MovieGenre = styled.p`
     font-size: 15px;
