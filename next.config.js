@@ -4,7 +4,7 @@
 module.exports = {
   reactStrictMode: true,
   env: {
-    NEXT_PUBLIC_TMDB_KEY: process.env.NEXT_PUBLIC_TMDB_KEY,
-    NEXT_PUBLIC_IMAGE_URL: process.env.NEXT_PUBLIC_IMAGE_URL
+    TMDB_KEY: process.env.TMDB_KEY,
+    IMAGE_URL: process.env.IMAGE_URL
   }
 }
