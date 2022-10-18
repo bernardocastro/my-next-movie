@@ -95,7 +95,7 @@ const DotDiv = styled.div`
 `
 
 const MovieCard = ({endpoint}) => {
-    const imgURL = process.env.NEXT_PUBLIC_IMAGE_URL
+    const imgURL = process.env.IMAGE_URL
 
     const [movieData, setMovieData] = useState([])
 
