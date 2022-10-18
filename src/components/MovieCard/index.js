@@ -6,6 +6,7 @@ import AddIcon from '@mui/icons-material/Add';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import ThumbDownOutlinedIcon from '@mui/icons-material/ThumbDownOutlined';
 import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
+import { Genres } from '../../config/genres';
 
 const Wrapper = styled.div`
     display: flex;
@@ -75,6 +76,11 @@ const MovieMatch = styled.p`
     font-size: 15px;
     color: #53D853;
 `
+const MovieGenre = styled.p`
+    font-weight: bold;
+    font-size: 15px;
+    color: #fff;
+`
 
 const MovieCard = () => {
     const imgURL = process.env.NEXT_PUBLIC_IMAGE_URL
@@ -91,12 +97,22 @@ const MovieCard = () => {
         getData()
     }, [])
 
+    const getGenreById = (genreId) => {
+        const showGenre = ''
+        let currentGenre = Genres.filter(genre => genre.id === genreId)
+        currentGenre.map((genre) => {
+            showGenre = genre.name
+            return showGenre
+        })
+        return showGenre
+    }
+
     return (
         <>
             <Wrapper>
                 {
                     movieData.map((movie, index) => {
-                        const { title, overview, backdrop_path, vote_average } = movie
+                        const { title, backdrop_path, vote_average, genre_ids } = movie
                         return (
                             <Card key={index}>
                                 <CardImg src={imgURL + backdrop_path} alt={title} />
@@ -133,6 +149,16 @@ const MovieCard = () => {
                                                 {Math.round(vote_average * 100) / 100} rate
                                             </MovieMatch>
                                         </div>
+                                        <div>
+                                            {
+                                                genre_ids.map((genreId) => {
+                                                    <MovieGenre>
+                                                        {getGenreById(genreId)}
+                                                    </MovieGenre>
+                                                })
+                                            }
+                                        </div>
+
                                     </DescriptionWrapper>
                                 </CardInfo>
                             </Card>
