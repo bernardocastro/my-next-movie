@@ -13,7 +13,6 @@ const BannerImg = styled.img`
 `
 
 const Banner = () => {
-    const imgURL = process.env.IMAGE_URL
 
     const [movieData, setMovieData] = useState([])
     const [randomMovie, setRandomMovie] = useState({})
@@ -32,7 +31,7 @@ const Banner = () => {
         <>
             <div style={{ width: '100%', height: '67vh' }} >
                 <BannerImg
-                    src={imgURL + randomMovie.backdrop_path}
+                    src={process.env.IMAGE_URL + randomMovie.backdrop_path}
                     alt={randomMovie.title}
                 />
                 <div style={{ marginLeft: '3.5rem', position: 'absolute', top: '25%', width: 400 }}>

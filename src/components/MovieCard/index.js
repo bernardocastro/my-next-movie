@@ -95,7 +95,6 @@ const DotDiv = styled.div`
 `
 
 const MovieCard = ({endpoint}) => {
-    const imgURL = process.env.IMAGE_URL
 
     const [movieData, setMovieData] = useState([])
 
@@ -127,7 +126,7 @@ const MovieCard = ({endpoint}) => {
                         const { title, backdrop_path, vote_average, genre_ids } = movie
                         return (
                             <Card key={index}>
-                                <CardImg src={imgURL + backdrop_path} alt={title} />
+                                <CardImg src={process.env.IMAGE_URL + backdrop_path} alt={title} />
                                 <CardInfo>
                                     <ButtonsWrapper>
                                         <div>
