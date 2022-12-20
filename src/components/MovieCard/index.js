@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import api from '../../api/api';
-import styled from 'styled-components'
+import styled from 'styled-components';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import AddIcon from '@mui/icons-material/Add';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import ThumbDownOutlinedIcon from '@mui/icons-material/ThumbDownOutlined';
 import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
 import { Genres } from '../../config/genres';
+import { Dialog } from '@mui/material';
+import MovieDialog from '../MovieDialog';
 
 const Wrapper = styled.div`
     display: flex;
@@ -22,7 +24,7 @@ const CardInfo = styled.div`
     padding: 7px;
 `
 const Card = styled.div`
-    width: 230px;
+    width: 240px;
     height: 130px;
     margin: 15px 5px 15px 0;
     transition: transform .2s;
@@ -94,9 +96,10 @@ const DotDiv = styled.div`
     margin: -25px 4px;
 `
 
-const MovieCard = ({endpoint}) => {
+const MovieCard = ({ endpoint }) => {
 
     const [movieData, setMovieData] = useState([])
+    const [open, setOpen] = useState(false)
 
     const getData = async () => {
         const resp = await api.get(endpoint)
@@ -118,12 +121,20 @@ const MovieCard = ({endpoint}) => {
         return showGenre
     }
 
+    const handleOpenDialog = () => {
+        setOpen(true)
+    }
+
+    const handleCloseDialog = () => {
+        setOpen(false)
+    }
+
     return (
         <>
             <Wrapper>
                 {
                     movieData.map((movie, index) => {
-                        const { title, backdrop_path, vote_average, genre_ids } = movie
+                        const { title, backdrop_path, vote_average, genre_ids, overview } = movie
                         return (
                             <Card key={index}>
                                 <CardImg src={process.env.IMAGE_URL + backdrop_path} alt={title} />
@@ -144,9 +155,17 @@ const MovieCard = ({endpoint}) => {
                                             </ActionButtons>
                                         </div>
                                         <div>
-                                            <ActionButtons>
+                                            <ActionButtons onClick={handleOpenDialog}>
                                                 <ExpandMoreOutlinedIcon style={{ color: '#fff' }} />
                                             </ActionButtons>
+                                            <MovieDialog
+                                                open={open}
+                                                handleCloseDialog={handleCloseDialog}
+                                                movieBg={backdrop_path}
+                                                title={title}
+                                                overview={overview}
+
+                                            />
                                         </div>
                                     </ButtonsWrapper>
                                     <DescriptionWrapper>
@@ -160,7 +179,7 @@ const MovieCard = ({endpoint}) => {
                                                 {Math.round(vote_average * 100) / 10}% match
                                             </MovieMatch>
                                         </div>
-                                        <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                                        <div style={{ display: 'flex', whiteSpace: 'nowrap' }}>
                                             {
                                                 genre_ids.slice(0, 3).map((genreId, index) => {
                                                     const isLast = index === genre_ids.length - 1
