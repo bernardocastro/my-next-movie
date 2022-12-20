@@ -104,7 +104,6 @@ const MovieCard = ({ endpoint }) => {
     const getData = async () => {
         const resp = await api.get(endpoint)
         setMovieData(resp.data.results)
-        console.log(resp)
     }
 
     useEffect(() => {
