@@ -136,7 +136,7 @@ const MovieCard = ({ endpoint }) => {
                         const { title, backdrop_path, vote_average, genre_ids, overview } = movie
                         return (
                             <Card key={index}>
-                                <CardImg src={process.env.IMAGE_URL + backdrop_path} alt={title} />
+                                <CardImg src={`${process.env.IMAGE_URL}` + backdrop_path} alt={title} />
                                 <CardInfo>
                                     <ButtonsWrapper>
                                         <div>
