@@ -9,7 +9,7 @@ const MovieDialog = ({ open, handleCloseDialog, movieBg, title, overview }) => {
         <Dialog sx={{width: 500}} open={open} onClose={handleCloseDialog}>
                 <img src={movieBg} alt={title} style={{width: '100%', height: '100%'}} />
                 <Grid>
-
+                    {overview}
                 </Grid>
         </Dialog>
     )

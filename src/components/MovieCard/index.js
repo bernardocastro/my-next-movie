@@ -17,7 +17,7 @@ const Wrapper = styled.div`
 `
 const CardInfo = styled.div`
     width: 100%;
-    height: 125px;
+    height: auto;
     background: rgb(20,20,20);
     display: none;
     border-radius: 0 0 6px 6px;
@@ -69,7 +69,7 @@ const ActionButtons = styled.button`
 `
 const MovieTitle = styled.p`
     color: #fff;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: bold;
 `
 const ButtonsWrapper = styled.div`
@@ -81,11 +81,11 @@ const DescriptionWrapper = styled.div`
 `
 const MovieMatch = styled.p`
     font-weight: bold;
-    font-size: 15px;
+    font-size: 14px;
     color: #53D853
 `
 const MovieGenre = styled.p`
-    font-size: 15px;
+    font-size: 13px;
     color: #fff;
 `
 const DotDiv = styled.div`
@@ -154,7 +154,7 @@ const MovieCard = ({ endpoint }) => {
                                             </ActionButtons>
                                         </div>
                                         <div>
-                                            <ActionButtons onClick={handleOpenDialog}>
+                                            <ActionButtons>
                                                 <ExpandMoreOutlinedIcon style={{ color: '#fff' }} />
                                             </ActionButtons>
                                             <MovieDialog
