@@ -7,7 +7,7 @@ import styled from 'styled-components';
 
 const BannerImg = styled.img`
     width: 100%;
-    height: 100%; 
+    height: 125%; 
     position: relative;
     -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)))
 `
