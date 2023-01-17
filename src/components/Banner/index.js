@@ -18,7 +18,7 @@ const Banner = () => {
     const [randomMovie, setRandomMovie] = useState({})
 
     const getData = async () => {
-        const resp = await api.get(`/trending/movie/day?api_key=${process.env.TMDB_KEY}`)
+        const resp = await api.get(`/trending/movie/day?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`)
         setMovieData(resp.data.results)
         setRandomMovie(resp.data.results[Math.floor(Math.random() * movieData.length)])
     }
@@ -31,7 +31,7 @@ const Banner = () => {
         <>
             <div style={{ width: '100%', height: '67vh' }} >
                 <BannerImg
-                    src={`${process.env.IMAGE_URL}` + randomMovie.backdrop_path}
+                    src={`${process.env.NEXT_PUBLIC_IMAGE_URL}` + randomMovie.backdrop_path}
                     alt={randomMovie.title}
                 />
                 <div style={{ marginLeft: '3.5rem', position: 'absolute', top: '25%', width: 400 }}>

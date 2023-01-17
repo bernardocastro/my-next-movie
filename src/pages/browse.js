@@ -21,23 +21,23 @@ const Browse = () => {
                 <GenreTitle >
                     Week Trending
                 </GenreTitle>
-                <MovieCard endpoint={`/trending/movie/week?api_key=${process.env.TMDB_KEY}`} />
+                <MovieCard endpoint={`/trending/movie/week?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}`} />
                 <GenreTitle>
                     Comedy
                 </GenreTitle>
-                <MovieCard endpoint={`/discover/movie?api_key=${process.env.TMDB_KEY}&with_genres=35`} />
+                <MovieCard endpoint={`/discover/movie?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}&with_genres=35`} />
                 <GenreTitle>
                     Horror
                 </GenreTitle>
-                <MovieCard endpoint={`/discover/movie?api_key=${process.env.TMDB_KEY}&with_genres=27`} />
+                <MovieCard endpoint={`/discover/movie?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}&with_genres=27`} />
                 <GenreTitle>
                     Thriller
                 </GenreTitle>
-                <MovieCard endpoint={`/discover/movie?api_key=${process.env.TMDB_KEY}&with_genres=53`} />
+                <MovieCard endpoint={`/discover/movie?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}&with_genres=53`} />
                 <GenreTitle>
                     Crime
                 </GenreTitle>
-                <MovieCard endpoint={`/discover/movie?api_key=${process.env.TMDB_KEY}&with_genres=80`} />
+                <MovieCard endpoint={`/discover/movie?api_key=${process.env.NEXT_PUBLIC_TMDB_KEY}&with_genres=80`} />
             </Box>
         </div>
     )

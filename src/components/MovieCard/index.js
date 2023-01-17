@@ -89,11 +89,14 @@ const MovieGenre = styled.p`
     color: #fff;
 `
 const DotDiv = styled.div`
-    width: 10px;
-    height: 10px;
+    width: 5px;
+    height: 5px;
     color: #FFFFFF80;
     font-size: 35px;
-    margin: -25px 4px;
+    margin: 7px 7px;
+    border: 1px solid #FFFFF80;
+    background: #FFFFFF80;
+    border-radius: 50%;
 `
 
 const MovieCard = ({ endpoint }) => {
@@ -136,7 +139,7 @@ const MovieCard = ({ endpoint }) => {
                         const { title, backdrop_path, vote_average, genre_ids, overview } = movie
                         return (
                             <Card key={index}>
-                                <CardImg src={`${process.env.IMAGE_URL}` + backdrop_path} alt={title} />
+                                <CardImg src={`${process.env.NEXT_PUBLIC_IMAGE_URL}` + backdrop_path} alt={title} />
                                 <CardInfo>
                                     <ButtonsWrapper>
                                         <div>
@@ -188,7 +191,7 @@ const MovieCard = ({ endpoint }) => {
                                                                 {getGenreById(genreId)}
                                                             </MovieGenre>
                                                             {
-                                                                !isLast && <DotDiv>.</DotDiv>
+                                                                !isLast && <DotDiv />
                                                             }
                                                         </>
                                                     )
