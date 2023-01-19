@@ -18,11 +18,11 @@ const TextWrapper = styled.div`
     width: 400;
     @media (max-width: 768px) {
         position: relative;
-        top: -38%;
+        top: -40%;
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-left: 1.5rem;
+        margin-left: 0.5rem;
       }
 `
 const Title = styled.p`
@@ -31,7 +31,7 @@ const Title = styled.p`
     color: #fff; 
     text-shadow: 2px 2px 4px rgb(0 0 0 / 45%);
     @media (max-width: 768px) {
-        font-size: 35px;
+        font-size: 25px;
       }
 `
 const OverviewWrapper = styled.div`
