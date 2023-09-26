@@ -1,4 +1,4 @@
-#My Next Movie
+# My Next Movie
 A Netflix clone prototype built using the [TMDB API]([https://restcountries.com/](https://developer.themoviedb.org/reference/intro/getting-started)).
 
 ## Topics
